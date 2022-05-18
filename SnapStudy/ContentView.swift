@@ -2,48 +2,37 @@
 //  ContentView.swift
 //  SnapStudy
 //
-//  Created by Jomills Jose Anand on 2022-05-15.
-//
 
 import SwiftUI
 
 struct ContentView: View {
-
-  @State var isPresenting: Bool = false
-  @State var uiImage: UIImage?
-      
+   
   var body: some View {
-    VStack{
-      HStack{
-        Image(systemName: "photo")
-          .onTapGesture {
-            isPresenting = true
-          }
-
-        Image(systemName: "camera")
+    
+      /*
+      We have three tabs:
+      - Home:
+          Here, users can learn from their flashcards.
+      - Camera:
+          Here, users can capture daily objects.
+      - Settings:
+          Here, users can change app settings.
+      */
+      
+      TabView {
+          HomeView()
+              .tabItem {
+                  Image(systemName: "house.fill")
+                }
+          CameraView()
+              .tabItem {
+                  Image(systemName: "camera.fill")
+              }
+          SettingsView()
+              .tabItem {
+                  Image(systemName: "gearshape.fill")
+              }
       }
-      .font(.largeTitle)
-      .foregroundColor(.blue)
-
-      Rectangle()
-        .strokeBorder()
-        .foregroundColor(.yellow)
-      .overlay(
-        Group {
-          if uiImage != nil {
-            Image(uiImage: uiImage!)
-              .resizable()
-              .scaledToFit()
-          }
-        }
-      )
-    }
-    .sheet(isPresented: $isPresenting){
-      ImagePicker(uiImage: $uiImage, isPresenting: $isPresenting)
-    }
-
-    .padding()
-
   }
 
 }
@@ -51,11 +40,8 @@ struct ContentView: View {
 
 
 struct ContentView_Previews: PreviewProvider {
-
   static var previews: some View {
-
     ContentView()
 
   }
-
 }
