@@ -46,7 +46,7 @@ struct HomeView: View {
         let combined = pressGesture.sequenced(before: dragGesture)
         
         VStack{
-            Text("Home Page")
+            CardView(card: Card.example)
                 .onTapGesture {
                     print("Text Tapped")
                 }

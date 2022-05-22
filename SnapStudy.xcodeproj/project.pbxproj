@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2041A87E2839B3FD00516183 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041A87D2839B3FD00516183 /* Card.swift */; };
+		2041A8812839B7B200516183 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2041A8802839B7B200516183 /* CardView.swift */; };
 		2049A7042831C3F3003495A7 /* SnapStudyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049A7032831C3F3003495A7 /* SnapStudyApp.swift */; };
 		2049A7062831C3F3003495A7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049A7052831C3F3003495A7 /* ContentView.swift */; };
 		2049A7082831C3F4003495A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2049A7072831C3F4003495A7 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2041A87D2839B3FD00516183 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		2041A8802839B7B200516183 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2049A7002831C3F3003495A7 /* SnapStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2049A7032831C3F3003495A7 /* SnapStudyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapStudyApp.swift; sourceTree = "<group>"; };
 		2049A7052831C3F3003495A7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +42,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2041A87C2839B3AE00516183 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2041A87D2839B3FD00516183 /* Card.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2041A87F2839B79F00516183 /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+				2041A8802839B7B200516183 /* CardView.swift */,
+			);
+			path = ModelView;
+			sourceTree = "<group>";
+		};
 		2049A6F72831C3F3003495A7 = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +77,8 @@
 		2049A7022831C3F3003495A7 /* SnapStudy */ = {
 			isa = PBXGroup;
 			children = (
+				2041A87F2839B79F00516183 /* ModelView */,
+				2041A87C2839B3AE00516183 /* Model */,
 				2049A713283487C9003495A7 /* Views */,
 				2049A7032831C3F3003495A7 /* SnapStudyApp.swift */,
 				2049A7052831C3F3003495A7 /* ContentView.swift */,
@@ -154,7 +176,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2041A8812839B7B200516183 /* CardView.swift in Sources */,
 				2049A7192834882A003495A7 /* SettingsView.swift in Sources */,
+				2041A87E2839B3FD00516183 /* Card.swift in Sources */,
 				2049A715283487F1003495A7 /* HomeView.swift in Sources */,
 				2049A7062831C3F3003495A7 /* ContentView.swift in Sources */,
 				2049A7042831C3F3003495A7 /* SnapStudyApp.swift in Sources */,
