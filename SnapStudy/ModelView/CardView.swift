@@ -26,8 +26,14 @@ struct CardView: View {
             
             // The card layout and styling
             RoundedRectangle(cornerRadius: 25, style: .continuous)
-                .fill(.blue)
-                .padding()
+                .fill(
+                    .blue
+                        .opacity(1 - Double(abs(offset.width / 25)))
+                )
+                .background(
+                    RoundedRectangle(cornerRadius: 25, style: .continuous)
+                        .fill(offset.width > 0 ? .green : .red)
+                )
                 .shadow(radius: 2)
             
             VStack {
@@ -49,7 +55,7 @@ struct CardView: View {
         .frame(minWidth: 250, idealWidth: 300, maxWidth: 350, minHeight: 200, idealHeight: 250, maxHeight: 300, alignment: .center)
         .rotationEffect(.degrees(Double(offset.width / 5)))
         .offset(x: offset.width * 5, y: 0)
-        .opacity(2 - Double(abs(offset.width / 30)))
+        .opacity(2 - Double(abs(offset.width / 40)))
         .gesture(
             DragGesture()
                 .onChanged {gesture in
