@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreHaptics
 
+
 struct HomeView: View {
     
     // State variables for dragging flashcard state
@@ -19,6 +20,9 @@ struct HomeView: View {
     
     @State private var engine: CHHapticEngine?
     
+    // Variable for repeating flashcards
+    
+    @State private var cards = Array<Card>(repeating: Card.example, count: 10)
     
     var body: some View {
         
@@ -45,11 +49,14 @@ struct HomeView: View {
         // Drag gesture gets triggered only when long pressed
         let combined = pressGesture.sequenced(before: dragGesture)
         
-        VStack{
-            CardView(card: Card.example)
-                .onTapGesture {
-                    print("Text Tapped")
+        ZStack{
+            VStack {
+                ZStack {
+                    ForEach(0..<cards.count, id: \.self) {index in
+                        CardView(card: cards[index])
+                    }
                 }
+            }
         }
             .scaleEffect(isDragging ? 1.5 : 1)
             .offset(offset)
