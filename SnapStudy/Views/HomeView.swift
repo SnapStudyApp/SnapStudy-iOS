@@ -8,97 +8,32 @@
 import SwiftUI
 import CoreHaptics
 
-
 struct HomeView: View {
-    
-    // State variables for dragging flashcard state
-    
-    @State private var offset = CGSize.zero
-    @State private var isDragging = false
-    
-    // Variable for device haptics
-    
-    @State private var engine: CHHapticEngine?
     
     // Variable for repeating flashcards
     
     @State private var cards = Array<Card>(repeating: Card.example, count: 10)
     
     var body: some View {
-        
-        // Variables for long pressing and dragging flashcards
-        
-        // Drag specific gesture
-        let dragGesture = DragGesture()
-            .onChanged { value in
-                offset = value.translation
-            }
-            .onEnded { _ in
-                offset = .zero
-                isDragging = false
-            }
-        
-        // Long press specific gesture
-        let pressGesture = LongPressGesture()
-            .onEnded { value in
-                withAnimation {
-                    isDragging = true
-                }
-            }
-        
-        // Drag gesture gets triggered only when long pressed
-        let combined = pressGesture.sequenced(before: dragGesture)
-        
         ZStack{
             VStack {
                 ZStack {
                     ForEach(0..<cards.count, id: \.self) {index in
-                        CardView(card: cards[index])
+                        CardView(card: cards[index]) {
+                            withAnimation {
+                                removeCard(at: index)
+                            }
+                        }
                     }
                 }
             }
         }
-            .scaleEffect(isDragging ? 1.5 : 1)
-            .offset(offset)
-            .gesture(combined)
-            .onAppear(perform: prepareHaptics)
-            .onTapGesture(perform: tapHaptic)
     }
     
-    
-    // Haptic feedback functions
-    
-    // Prepares haptics if supported, else returns
-    func prepareHaptics() {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-        
-        do {
-            engine = try CHHapticEngine()
-            try engine?.start()
-        } catch {
-            print("There was an error: \(error.localizedDescription)")
-        }
+    // Function to remove cards when swiped
+    func removeCard(at index: Int) {
+        cards.remove(at: index)
     }
-    
-    // Tap haptic feedback
-    func tapHaptic() {
-        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
-        
-        var events = [CHHapticEvent]()
-        let intensity = CHHapticEventParameter(parameterID: .hapticIntensity, value: 1)
-        let sharpness = CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5)
-        let event = CHHapticEvent(eventType: .hapticTransient, parameters: [intensity, sharpness], relativeTime: 0)
-        events.append(event)
-        
-        do {
-            let pattern = try CHHapticPattern(events: events, parameters: [])
-            let player = try engine?.makePlayer(with: pattern)
-            try player?.start(atTime: 0)
-        } catch {
-            print("Failed to play success haptic with error: \(error.localizedDescription)")
-        }
-    }
-    
     
 }
 

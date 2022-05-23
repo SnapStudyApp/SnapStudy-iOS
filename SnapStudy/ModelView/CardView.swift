@@ -10,6 +10,9 @@ struct CardView: View {
     // Defining the card
     let card: Card
     
+    // Removing the card when swiped
+    var removal: (() -> Void)? = nil
+    
     // Variable to show/hide answer
     @State private var isShowingAnswer = false
     
@@ -25,7 +28,7 @@ struct CardView: View {
             RoundedRectangle(cornerRadius: 25, style: .continuous)
                 .fill(.blue)
                 .padding()
-                .shadow(radius: 5)
+                .shadow(radius: 2)
             
             VStack {
                 
@@ -53,9 +56,11 @@ struct CardView: View {
                     offset = gesture.translation
                 }
                 .onEnded {_ in
-                    if offset.width > 100 {
+                    if abs(offset.width) > 100 {
                         // Removes card if offset is greater than 100
+                        removal?()
                     } else {
+                        // Otherwise returns the card to the center
                         offset = .zero
                     }
                 }
