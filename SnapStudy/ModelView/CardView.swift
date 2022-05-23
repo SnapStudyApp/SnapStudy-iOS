@@ -13,6 +13,9 @@ struct CardView: View {
     // Variable to show/hide answer
     @State private var isShowingAnswer = false
     
+    // Variable for card offset
+    @State private var offset = CGSize.zero
+    
     var body: some View {
         
         // The card is displayed in the ZStack
@@ -22,7 +25,7 @@ struct CardView: View {
             RoundedRectangle(cornerRadius: 25, style: .continuous)
                 .fill(.blue)
                 .padding()
-                .shadow(radius: 10)
+                .shadow(radius: 5)
             
             VStack {
                 
@@ -41,6 +44,22 @@ struct CardView: View {
             .multilineTextAlignment(.center)
         }
         .frame(minWidth: 250, idealWidth: 300, maxWidth: 350, minHeight: 200, idealHeight: 250, maxHeight: 300, alignment: .center)
+        .rotationEffect(.degrees(Double(offset.width / 5)))
+        .offset(x: offset.width * 5, y: 0)
+        .opacity(2 - Double(abs(offset.width / 30)))
+        .gesture(
+            DragGesture()
+                .onChanged {gesture in
+                    offset = gesture.translation
+                }
+                .onEnded {_ in
+                    if offset.width > 100 {
+                        // Removes card if offset is greater than 100
+                    } else {
+                        offset = .zero
+                    }
+                }
+        )
         .onTapGesture {
             isShowingAnswer.toggle()
         }
