@@ -20,6 +20,10 @@ struct ContentView: View {
       */
       
       TabView {
+          ListView()
+              .tabItem {
+                  Image(systemName: "list.bullet.rectangle.fill")
+              }
           HomeView()
               .tabItem {
                   Image(systemName: "house.fill")

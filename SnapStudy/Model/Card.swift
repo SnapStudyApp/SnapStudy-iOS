@@ -5,8 +5,9 @@
 import Foundation
 
 struct Card {
-    let prompt: String
-    let answer: String
+    let prompt: String // Question
+    let answer: String // Answer
+    var attempt: Int // Variable to move the card back and forth in the stack
     
-    static let example = Card(prompt: "犬", answer: "Dog")
+    static let example = Card(prompt: "犬", answer: "Dog", attempt: 0)
 }
