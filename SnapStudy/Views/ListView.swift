@@ -9,8 +9,30 @@
 import SwiftUI
 
 struct ListView: View {
+    
+    @State private var cards = Array<Card>(repeating: Card.example, count: 10)
+    
     var body: some View {
-        Text("List View")
+        NavigationView{
+            VStack(alignment: .leading) {
+                List(cards) { item in
+                    HStack{
+                        Text(item.prompt)
+                            .padding(.horizontal)
+                        Text(item.answer)
+                            .padding(.horizontal)
+                    }
+                }
+                Button (action: {}) {
+                    HStack {
+                        Image(systemName: "plus.circle.fill")
+                        Text("Add New Flashcard")
+                    }
+                    .padding()
+                }
+            }
+            .navigationBarTitle("Flashcard List")
+        }
     }
 }
 

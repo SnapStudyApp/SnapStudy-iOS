@@ -17,6 +17,7 @@
 		2049A71728348816003495A7 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049A71628348816003495A7 /* CameraView.swift */; };
 		2049A7192834882A003495A7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049A7182834882A003495A7 /* SettingsView.swift */; };
 		204DD85728516C7100688F12 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204DD85628516C7100688F12 /* ListView.swift */; };
+		204DD8592852D47700688F12 /* CardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204DD8582852D47700688F12 /* CardCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		2049A71628348816003495A7 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		2049A7182834882A003495A7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		204DD85628516C7100688F12 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		204DD8582852D47700688F12 /* CardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			isa = PBXGroup;
 			children = (
 				2041A87D2839B3FD00516183 /* Card.swift */,
+				204DD8582852D47700688F12 /* CardCellViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				2041A8812839B7B200516183 /* CardView.swift in Sources */,
 				2049A7192834882A003495A7 /* SettingsView.swift in Sources */,
 				2041A87E2839B3FD00516183 /* Card.swift in Sources */,
+				204DD8592852D47700688F12 /* CardCellViewModel.swift in Sources */,
 				2049A715283487F1003495A7 /* HomeView.swift in Sources */,
 				2049A7062831C3F3003495A7 /* ContentView.swift in Sources */,
 				2049A7042831C3F3003495A7 /* SnapStudyApp.swift in Sources */,
